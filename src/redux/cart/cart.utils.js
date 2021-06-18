@@ -13,3 +13,20 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+  console.log(
+    cartItems.map((cartItem) =>
+      cartItem === cartItemToRemove
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    )
+  );
+  return cartItems
+    .map((cartItem) =>
+      cartItem === cartItemToRemove
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    )
+    .filter((cartItem) => cartItem.quantity !== 0);
+};
